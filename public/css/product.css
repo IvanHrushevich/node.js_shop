@@ -1,0 +1,26 @@
+.product-from {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+}
+.form-control {
+  margin: 1rem 0;
+}
+.form-control label,
+.form-control input {
+  display: block;
+  width: 100%;
+}
+.form-control input {
+  height: 1.5rem;
+  border: 1px solid #9c8500;
+  border-radius: 2px;
+}
+button {
+  border: 1px solid #7d009c;
+  background-color: white;
+  color: #7d009c;
+  border-radius: 2px;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+}
