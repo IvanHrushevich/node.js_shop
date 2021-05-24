@@ -11,11 +11,10 @@ exports.getAddProduct = (req, res, next) => {
 exports.postAddProduct = (req, res, next) => {
     const { title, imageUrl, description, price } = req.body;
     const product = new Product(null, title, imageUrl, description, price);
-    product
-        .save()
-        .then(() => res.redirect('/'))
+
+    Product.create({ title, price, imageUrl, description })
+        .then(res => console.log(`res`, res))
         .catch(error => console.log(`error`, error));
-    res.redirect('/');
 };
 
 exports.getEditProduct = (req, res, next) => {
@@ -65,11 +64,13 @@ exports.postDeleteProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-    Product.fetchAll(products => {
-        res.render('admin/products', {
-            prods: products,
-            pageTitle: 'Admin Products',
-            path: '/admin/products',
-        });
-    });
+    Product.findAll()
+        .then(products => {
+            res.render('admin/products', {
+                prods: products,
+                pageTitle: 'Admin Products',
+                path: '/admin/products',
+            });
+        })
+        .catch(error => console.log(`error`, error));
 };
